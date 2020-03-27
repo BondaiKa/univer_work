@@ -5,20 +5,21 @@ class Cipher:
     def __init__(self, A, K):
         self.A = A
         self.K = K
+        self.alp = list(map(chr, range(97, 123)))
+        self.might = 26
 
     def coding(self, string):
         result = []
         for x in string:
-            item = ord(x)
-            result.append(chr(65 + self.A * (item - 65) + self.K))
-
+            item = self.alp.index(x)
+            result.append(self.alp[(self.A * item + self.K) % self.might])
         return ''.join(result)
 
     def decoding(self, string):
         result = []
         for x in string:
-            item = ord(x)
-            result.append(chr(int(65 + self.A ** (-1) * (item - 65 - self.K))))
+            item = self.alp.index(x)
+            result.append(self.alp[int(((self.A ** (-1))*(item - self.K))% self.might)])
         return ''.join(result)
 
 
@@ -26,7 +27,7 @@ if __name__ == "__main__":
     A = 7
     K = 3
     cipher = Cipher(A, K)
-    string = input("Enter string to encrypt")
+    string = input("Enter string to encrypt: ")
 
     after_coding = cipher.coding(string)
     print('After coding string: '+ after_coding)
