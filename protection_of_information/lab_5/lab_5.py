@@ -1,4 +1,5 @@
 from collections import Counter
+import numpy as np
 
 
 class OpenTextHadnler:
@@ -13,16 +14,11 @@ class OpenTextHadnler:
         self._list_count = Counter(self._text)
         self._list_percentage = [(x, y/self._len_text)
                                  for x, y in self._list_count.most_common()]
-        # self._array_percent = np.asarray([x[1] for x in self._list_percentage])
+        self._array_percent = np.asarray([x[1] for x in self._list_percentage])
 
     def find_nearest_char(self, percent):
-        nearest_index = 0
-        for index, _tuple in enumerate(self._list_percentage):
-            current = abs(_tuple[1]-percent)
-            less = abs(self._list_percentage[nearest_index][1]-percent)
-            if current < less:
-                nearest_index = index
-        return self._list_percentage.pop(nearest_index)[0]
+        idx = (np.abs(self._array_percent - percent)).argmin()
+        return self._list_percentage[idx][0]
 
 
 class DecodeText(OpenTextHadnler):
@@ -53,8 +49,10 @@ class DecodeText(OpenTextHadnler):
 if __name__ == "__main__":
     open_instance = OpenTextHadnler(
         'protection_of_information/lab_5/Open_text_utf_8.txt')
+    # print(open_instance._list_count)
     encode_instance = DecodeText(
         'protection_of_information/lab_5/encrypt7_utf_8.txt')
     encode_instance.decode(open_instance)
     encode_instance.save()
     print(encode_instance)
+    # print(encode_instance._list_count)
