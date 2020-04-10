@@ -15,7 +15,7 @@ class OpenTextHadnler:
                                  for x, y in self._list_count.most_common()]
 
 
-class EncodeText(OpenTextHadnler):
+class DecodeText(OpenTextHadnler):
     """
     work with encode text, works woth same responsibilities
     and decode encoding text using open text
@@ -26,7 +26,7 @@ class EncodeText(OpenTextHadnler):
         self._dict_translate = {}
         self._list_char = list(self._text)
 
-    def translate(self, open_instance):
+    def decode(self, open_instance):
         self._dict_translate = {}
         for open_list, encode_list in zip(open_instance._list_percentage, self._list_percentage):
             self._dict_translate[encode_list[0]] = open_list[0]
@@ -44,7 +44,7 @@ class EncodeText(OpenTextHadnler):
 
 if __name__ == "__main__":
     open_instance = OpenTextHadnler('protection_of_information/lab_5/Open_text_utf_8.txt')
-    encode_instance = EncodeText('protection_of_information/lab_5/encrypt7_utf_8.txt')
-    encode_instance.translate(open_instance)
+    encode_instance = DecodeText('protection_of_information/lab_5/encrypt7_utf_8.txt')
+    encode_instance.decode(open_instance)
     encode_instance.save()
     # print(encode_instance)
