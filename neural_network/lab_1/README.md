@@ -16,18 +16,6 @@ I used dataset that was download on [kaggle website](https://www.kaggle.com/dans
 A [dataset](./melb_data.csv) is Melbourne housing data. The **goal** is to **predict** price of house   
 The dataset includes Address, Type of Real estate, Suburb, Method of Selling, Rooms, Price, Real Estate Agent, Date of Sale and distance from C.B.D.  
 
-Inputs column:
-- `Address`
-- `Rooms`
-- `Type`
-- `Date`
-- `Distance`
-- `Postcode`
-
-I excluded Suburb and SellerG column because former column has same function as Postcode and latter because it was useless information
-
-Output will be Price` column
-
 Check [jupyter's type file](./lab_1_dataset_description.pynb) for look at details of dataset's description :green_book:
 
 
