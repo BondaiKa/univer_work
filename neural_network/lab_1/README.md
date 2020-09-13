@@ -5,9 +5,9 @@
 
 0. Installing conda and jupyter notebook   
 ![Examination](./conda_version.png)
-0. jupyter version 
+0. jupyter version  
 ![jupyter](./jupyter.png)
-0. tensorflow version 
+0. tensorflow version  
 ![tensorflow](./tensorflow.png)
 ---
 ### Dataset information
