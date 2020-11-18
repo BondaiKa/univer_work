@@ -29,3 +29,14 @@ def split_dataset(pd_data, batch_size=1)->tuple:
     train_dataset = tf.data.Dataset.from_tensor_slices((train.values, target_train.values)).batch(batch_size)
     val_dataset = tf.data.Dataset.from_tensor_slices((validation.values, target_val.values)).batch(batch_size)
     return train_dataset, val_dataset
+
+def get_average(target,predicted,details=True):
+	"""count average difference between target value and predicted value"""
+	average_diff = 0
+	for pred_price, orig_price in zip(predicted,target):
+	    cur_diff = abs((orig_price[1].numpy() - pred_price[0])[0])
+	    average_diff = (average_diff + cur_diff) / 2
+	    if details:
+	    	print(f'Original price: {orig_price[1].numpy()[0]};    Prediciton price: {pred_price[0]}. \t Difference: {cur_diff}')
+	return average_diff
+
