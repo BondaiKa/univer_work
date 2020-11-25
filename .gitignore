@@ -1,3 +1,6 @@
 .DS_Store
 */.vscode/*
 *.~lock.Lab1 Preliminaries.docx#
+.ipynb_checkpoints/
+~$b*
+*dataset/
